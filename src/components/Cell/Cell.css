@@ -1,0 +1,12 @@
+.root {
+  border: 1px solid #373277;
+  flex-basis: 32%;
+  font-weight: bold;
+  margin: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

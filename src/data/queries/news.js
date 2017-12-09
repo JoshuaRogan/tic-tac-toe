@@ -12,9 +12,8 @@ import fetch from 'node-fetch';
 import NewsItemType from '../types/NewsItemType';
 
 // React.js News Feed (RSS)
-const url =
-  'https://api.rss2json.com/v1/api.json' +
-  '?rss_url=https%3A%2F%2Freactjsnews.com%2Ffeed.xml';
+
+const redditUrl = `https://www.reddit.com/r/TrueTicTacToe/new.json`;
 
 let items = [];
 let lastFetchTask;
@@ -26,15 +25,23 @@ const news = {
     if (lastFetchTask) {
       return lastFetchTask;
     }
-
     if (new Date() - lastFetchTime > 1000 * 60 * 10 /* 10 mins */) {
       lastFetchTime = new Date();
-      lastFetchTask = fetch(url)
-        .then(response => response.json())
+      lastFetchTask = fetch(redditUrl)
+        .then(response => {
+          return response.json();
+        })
         .then(data => {
-          if (data.status === 'ok') {
-            items = data.items;
-          }
+          items = data.data.children.map(dataItem => ({
+            title: dataItem.data.title,
+            pubDate: Date.now().toString(),
+            link: `http://reddit.com/${dataItem.data.permalink}`,
+            guid: dataItem.data.permalink,
+            author: dataItem.data.name,
+            thumbnail: dataItem.data.thumbnail,
+            description: dataItem.data.selftext_html,
+            content: dataItem.data.selftext_html,
+          }));
 
           lastFetchTask = null;
           return items;

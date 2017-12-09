@@ -8,18 +8,16 @@
  */
 
 import React from 'react';
+import Board from '../../components/Board';
 import Layout from '../../components/Layout';
-import Contact from './Contact';
 
-const title = 'Contact Us';
-
-function action() {
+async function action({ fetch }) {
   return {
-    chunks: ['contact'],
-    title,
+    chunks: ['home'],
+    title: 'React Starter Kit',
     component: (
       <Layout>
-        <Contact title={title} />
+        <Board xPiece="x" oPiece="o" />
       </Layout>
     ),
   };

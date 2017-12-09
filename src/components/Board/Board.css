@@ -1,0 +1,11 @@
+.root {
+  background: #fff;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.scoreboard {
+  width: 100%;
+}

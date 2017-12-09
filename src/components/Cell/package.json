@@ -1,6 +1,6 @@
 {
-  "name": "Footer",
+  "name": "Cell",
   "version": "0.0.0",
   "private": true,
-  "main": "./Footer.js"
+  "main": "./Cell.js"
 }
